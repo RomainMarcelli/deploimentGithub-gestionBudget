@@ -20,7 +20,7 @@ function Projet() {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch("http://localhost:5000/projects");
+      const response = await fetch("https://d-ploiement-back-production.up.railway.app/projects");
       const data = await response.json();
       setProjects(data);
     } catch (error) {
@@ -32,7 +32,7 @@ function Projet() {
     e.preventDefault();
     if (projectName.trim() === "") return;
 
-    const response = await fetch("http://localhost:5000/projects", {
+    const response = await fetch("https://d-ploiement-back-production.up.railway.app/projects", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: projectName }),
@@ -47,7 +47,7 @@ function Projet() {
   };
 
   const deleteProject = async (id: string) => {
-    const response = await fetch(`http://localhost:5000/projects/${id}`, {
+    const response = await fetch(`https://d-ploiement-back-production.up.railway.app/projects/${id}`, {
       method: "DELETE",
     });
 
@@ -63,7 +63,7 @@ function Projet() {
   };
 
   const updateProject = async (id: string) => {
-    const response = await fetch(`http://localhost:5000/projects/${id}`, {
+    const response = await fetch(`https://d-ploiement-back-production.up.railway.app/projects/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: updatedProjectName }),

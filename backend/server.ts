@@ -11,7 +11,16 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+const allowedOrigins = [
+  "https://romainmarcelli.github.io/deploimentGithub-gestionBudget",
+  "https://romainmarcelli.github.io"
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
+
 
 app.use(express.json());
 

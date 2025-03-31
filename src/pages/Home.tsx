@@ -80,7 +80,7 @@ function Home() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/collaborators?month=${selectedMonth}&year=${selectedYear}`)
+    fetch(`https://d-ploiement-back-production.up.railway.app/collaborators?month=${selectedMonth}&year=${selectedYear}`)
       .then((response) => response.json())
       .then((data) => setCollaborators(data))
       .catch((error) => console.error("Erreur lors du chargement :", error));
@@ -93,7 +93,7 @@ function Home() {
     }
 
     try {
-      await fetch(`http://localhost:5000/collaborators/${id}/comment`, {
+      await fetch(`https://d-ploiement-back-production.up.railway.app/collaborators/${id}/comment`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

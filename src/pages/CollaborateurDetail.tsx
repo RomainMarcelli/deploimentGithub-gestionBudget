@@ -44,7 +44,7 @@ function CollaborateurDetail() {
     useEffect(() => {
         const currentYear = new Date().getFullYear();
 
-        fetch(`http://localhost:5000/collaborators/${id}?month=${selectedMonth}&year=${currentYear}`)
+        fetch(`https://d-ploiement-back-production.up.railway.app/collaborators/${id}?month=${selectedMonth}&year=${currentYear}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Collaborateur non trouvé");

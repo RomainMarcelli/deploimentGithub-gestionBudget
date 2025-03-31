@@ -87,7 +87,7 @@ function CollaboratorList({
         if (daysWorked[key] == null) return; // ✅ Vérification
     
         try {
-            const response = await fetch(`https://deploiement-recapexcel.onrender.com/collaborators/${collabId}/add-days`, {
+            const response = await fetch(`https://d-ploiement-back-production.up.railway.app/collaborators/${collabId}/add-days`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -135,7 +135,7 @@ function CollaboratorList({
         const updates = Object.entries(daysWorked).map(([key, days]) => {
             const [collabId, projectId, month, year] = key.split("-");
     
-            return fetch(`https://deploiement-recapexcel.onrender.com/collaborators/${collabId}/add-days`, {
+            return fetch(`https://d-ploiement-back-production.up.railway.app/collaborators/${collabId}/add-days`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ projectId, days, month, year }), // ✅ Envoie le bon mois et année
