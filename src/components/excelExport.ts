@@ -30,7 +30,7 @@ const monthColors: { [key: string]: string } = {
 export const exportToStyledExcel = async (data: ExcelData[], fileName: string) => {
   try {
     // 🔥 Charger le modèle Excel depuis un fichier local
-    const response = await fetch("/template.xlsx");
+    const response = await fetch(`${process.env.PUBLIC_URL}/template.xlsx`);
     if (!response.ok) {
       throw new Error(`❌ Impossible de charger le fichier template.xlsx : ${response.statusText}`);
     }
