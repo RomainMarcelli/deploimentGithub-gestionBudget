@@ -1,4 +1,4 @@
-import * as XLSX from "xlsx";
+import * as XLSX from "xlsx-js-style";
 
 interface ExcelData {
   Nom: string;
@@ -31,7 +31,13 @@ export const exportToStyledExcel = async (data: ExcelData[], fileName: string) =
   try {
     // 🔥 Charger le modèle Excel depuis un fichier local
     const response = await fetch("/template.xlsx");
+    if (!response.ok) {
+      throw new Error(`❌ Impossible de charger le fichier template.xlsx : ${response.statusText}`);
+    }
     const arrayBuffer = await response.arrayBuffer();
+    if (!arrayBuffer || arrayBuffer.byteLength === 0) {
+      throw new Error("❌ Le fichier téléchargé est vide ou inaccessible.");
+    }
     const workbook = XLSX.read(arrayBuffer, { type: "array" });
 
     // 📝 Sélectionner la première feuille
